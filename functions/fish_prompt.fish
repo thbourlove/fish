@@ -258,46 +258,12 @@ function __bobthefish_prompt_dir -d 'Display a shortened form of the current dir
   __bobthefish_path_segment "$PWD"
 end
 
-function __bobthefish_vi_mode -d 'Display vi mode'
-  switch $vi_mode
-    case $vi_mode_insert
-      set_color -b $__bobthefish_yellow
-      set_color 000
-      echo -n I
-    case $vi_mode_normal
-      set_color -b $__bobthefish_lt_grey
-      set_color 000
-      echo -n N
-    case $vi_mode_g
-      set_color -b $__bobthefish_med_green
-      set_color 000
-      echo -n G
-    case $vi_mode_swapcase
-      set_color -b $__bobthefish_med_green
-      set_color 000
-      echo -n S
-    case $vi_mode_upper
-      set_color -b $__bobthefish_dk_green
-      set_color 000
-      echo -n U
-    case $vi_mode_lower
-      set_color -b $__bobthefish_lt_green
-      set_color 000
-      echo -n L
-    case $vi_mode_replace $vi_mode_REPLACE
-      set_color -b $__bobthefish_med_red
-      set_color 000
-      echo -n R
-  end
-end
-
 # ===========================
 # Apply theme
 # ===========================
 
 function fish_prompt -d 'bobthefish, a fish theme optimized for awesome'
   set -g RETVAL $status
-  __bobthefish_vi_mode
   __bobthefish_prompt_status
   __bobthefish_prompt_user
   if __bobthefish_in_git
