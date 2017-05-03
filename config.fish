@@ -9,7 +9,15 @@ if type go >/dev/null 2>&1
         set -x GOPATH $HOME/Develop/go
         set -x PATH $PATH $GOPATH/bin
     end
+    if test -d /usr/local/go
+        set -x GOROOT /usr/local/go
+    end
     if test -d /usr/local/opt/go/libexec
         set -x GOROOT /usr/local/opt/go/libexec
     end
 end
+if test -d $HOME/Library/Android/sdk
+    set -x ANDROID_HOME $HOME/Library/Android/sdk
+end
+[ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish ]
+#eval (python -m virtualfish)

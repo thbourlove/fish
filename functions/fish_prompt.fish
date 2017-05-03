@@ -258,6 +258,12 @@ function __bobthefish_prompt_dir -d 'Display a shortened form of the current dir
   __bobthefish_path_segment "$PWD"
 end
 
+function virtualfish -d 'show virtualenv prompt'
+  if set -q VIRTUAL_ENV
+    echo -n -s (set_color -b blue white) " " (basename "$VIRTUAL_ENV") " " (set_color normal)
+  end
+end
+
 # ===========================
 # Apply theme
 # ===========================
@@ -271,5 +277,6 @@ function fish_prompt -d 'bobthefish, a fish theme optimized for awesome'
   else
     __bobthefish_prompt_dir
   end
+  virtualfish
   __bobthefish_finish_segments
 end
